@@ -67,3 +67,47 @@ make musicViz_omp3
 ```
 
 Go back to the `bin` folder and repeat steps 2 and 3.
+
+## Pseudocode
+
+```
+Loop through the events before the first NOTE-ON event: //first for-loop
+    If the event type is Control Change:
+        Initialize the channel's width to 1
+        Map the instrument number and channel's width to the channel
+
+//Some MIDI files do not have Control Change events.
+If the number of channel = 0 or an instrument is not set:
+    Default the only channel to instrument 1, which is acoustic grand piano
+
+//File duration (in ticks) can be very large, so I scale the file duration down to 500 to avoid running out of memory.
+Scale <- File duration / 500
+File duration <- 500
+
+Continue looping through events: //second for-loop
+    If the event type is NOTE-ON: // all non-NOTEON events are skipped
+	     Get the channel where this event happens
+        Starting x-coordinate <- Event's starting time/Scale
+        Ending x-coordinate <- Starting x-coordinate + Event's duration/Scale
+		
+        Initialize y-coordinate to 0
+        While ColorMap[channel][y-coordinate][starting x-coordinate] is already painted:
+            y-coordinate++
+            If y-coordinate == current channel's width:
+                Increase channel's width by 1
+
+        Convert sound/instrument number to hue (H)
+        Convert velocity (volume) to saturation (S)
+        Convert pitch to brightness (B)
+
+        Convert HSB to RGB color, because GNU Plot needs RGB
+        ColorMap[channel][y_coord][Starting x_coord:Ending x_coord] = RGB color value
+```
+
+Writing the data file in the x:y:R:G:B format:
+```
+Loop through each channel:
+    Loop through the rows of the current channel, from 0 to channelWidth:
+        Loop through the scaled duration of the whole file (x-axis):
+            Append the x, y, R, G, B data of current cell into a file for GNU plot to draw from
+```
