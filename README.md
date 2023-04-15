@@ -23,8 +23,8 @@ This method is run on the mscs1 machine. Please contact my advisor, Libby Shoop 
 ├── midifile: Library to process .midi files. Need to download separately from (here)[https://midifile.sapp.org/]
 └── src
     ├── musicViz_omp2.2.cpp: parallel version using parallel loop chunks of 1
-    ├── musicViz_omp3.cpp: **official* implementation of the parallel version, using parallel loop equal chunks
-    ├── musicViz_seq2.cpp: *official* implementation of the sequential version
+    ├── musicViz_omp3.cpp: OFFICIAL implementation of the parallel version, using parallel loop equal chunks
+    ├── musicViz_seq2.cpp: OFFICIAL implementation of the sequential version
     ├── ...
  ```  
    
