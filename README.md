@@ -86,7 +86,7 @@ File duration <- 500
 
 Continue looping through events: //second for-loop
     If the event type is NOTE-ON: // all non-NOTEON events are skipped
-	     Get the channel where this event happens
+	Get the channel where this event happens
         Starting x-coordinate <- Event's starting time/Scale
         Ending x-coordinate <- Starting x-coordinate + Event's duration/Scale
 		
