@@ -5,7 +5,7 @@ Download the midifile library from [here](https://midifile.sapp.org/) and put th
 This method is run on the mscs1 machine. Please contact my advisor, Libby Shoop to set up an account and run the code via ssh.
 
 ## Project Structure
-
+```bash
 .
 ├── Makefile
 ├── Xauthority
@@ -26,9 +26,9 @@ This method is run on the mscs1 machine. Please contact my advisor, Libby Shoop 
     ├── musicViz_omp3.cpp: **official* implementation of the parallel version, using parallel loop equal chunks
     ├── musicViz_seq2.cpp: *official* implementation of the sequential version
     ├── ...
+ ```  
    
-   
- ## How to run
+ ## How to run the code
  
  1. To generate an image for a piece of music, first put a .midi file into the `bin/midi_samples` folder. 
  
